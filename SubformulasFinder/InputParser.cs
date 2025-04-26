@@ -13,7 +13,7 @@ namespace SKNF_SDNF;
 
 public class InputParser
 {
-     private readonly char[] _operations = new char[] { '&', '|', '!', '>', '~', '/', '\\', '-' };
+     private readonly char[] _operations = new char[] { '!', '~', '/', '\\', '-' };
      private List<char> _letters = new List<char>();
      
      public List<char> Letters {get => _letters;}
