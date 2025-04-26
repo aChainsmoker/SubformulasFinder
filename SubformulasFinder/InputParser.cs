@@ -1,8 +1,19 @@
-﻿namespace SKNF_SDNF;
+﻿// Выполнил студент группы 321701 БГУИР:
+// - Неборский Иван Александрович
+// Вариант 10
+//
+// Класс парсинга строки и разбиения её на подформулы
+// 20.04.2025
+//
+// Источники:
+// - Проектирование программного обеспечения интеллектуальных систем (3 семестр)
+//
+
+namespace SKNF_SDNF;
 
 public class InputParser
 {
-     private readonly char[] _operations = new char[] { '&', '|', '!', '>', '~' };
+     private readonly char[] _operations = new char[] { '&', '|', '!', '>', '~', '/', '\\', '-' };
      private List<char> _letters = new List<char>();
      
      public List<char> Letters {get => _letters;}
@@ -45,6 +56,10 @@ public class InputParser
                     }
 
                     formulaStack.Push(formula[k]);
+
+                    if (formula[k] == '/' || formula[k] == '\\' || formula[k] == '-')
+                         ++k;
+
                }
           }
           
@@ -101,7 +116,7 @@ public class InputParser
           switch (operation)
           {
                case '!': return 3;
-               case '&': case '|': case '~': case '>': return 2;
+               case '&': case '|': case '~': case '>': case '-': case '/': case '\\': return 2;
                case '(': return 1;
           }
           return 0;
