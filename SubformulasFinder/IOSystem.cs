@@ -35,10 +35,10 @@ public static class IOSystem
                         subformulas[i]=subformulas[i].Insert(++j, ">");
                         break;
                     case '/':
-                        subformulas[i].Insert(++j, "\\");
+                        subformulas[i]=subformulas[i].Insert(++j, "\\");
                         break;
                     case '\\':
-                        subformulas[i].Insert(++j, "/");
+                        subformulas[i]=subformulas[i].Insert(++j, "/");
                         break;
                     default:
                         break;
@@ -51,7 +51,10 @@ public static class IOSystem
         Console.WriteLine("Enter logical expression");
         return Console.ReadLine();
     }
-    
-    
+
+    public static void TestUserKnowledge()
+    {
+        Dictionary<string, char> test = new Dictionary<string, char>() {"(!((S->((!R)\\/(P/\\Q)))~(P/\\(!(Q->R)))))", 'Y'};
+    }
     
 }
