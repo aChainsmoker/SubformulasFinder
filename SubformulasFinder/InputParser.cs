@@ -72,8 +72,10 @@ public class InputParser
           return reformedFormula;
      }
      
-     public List<string> FindSubformulas(string reformedFormula)
+     public List<string> FindSubformulas(string formula)
      {
+          _letters.Clear();
+          string reformedFormula = ReformFormula(formula);
           List<string> subformulas = new List<string>(_letters.Select(l => l.ToString()));
           Stack<string> formulaStack = new Stack<string>();
 
@@ -106,7 +108,7 @@ public class InputParser
 
      private string WrapInBracketsIfNeeded(string formula)
      {
-          if(formula.Length >= 3)
+          if(formula.Length >= 3 || (formula.Length >= 2 && formula.Contains('!')))
                return new String("(" + formula + ")");
           return formula;
      }
@@ -116,7 +118,7 @@ public class InputParser
           switch (operation)
           {
                case '!': return 3;
-               case '&': case '|': case '~': case '>': case '-': case '/': case '\\': return 2;
+               case '~':  case '-': case '/': case '\\': return 2;
                case '(': return 1;
           }
           return 0;

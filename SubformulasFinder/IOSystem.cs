@@ -52,9 +52,46 @@ public static class IOSystem
         return Console.ReadLine();
     }
 
-    public static void TestUserKnowledge()
+    public static int TakeTheModeOption()
     {
-        Dictionary<string, char> test = new Dictionary<string, char>() {"(!((S->((!R)\\/(P/\\Q)))~(P/\\(!(Q->R)))))", 'Y'};
+        int modeIndex;
+        Console.WriteLine("Select mode:\n1.Find subformulas amount.\n2.Knowledge check.");
+        while (!int.TryParse(Console.ReadLine(), out modeIndex) || (modeIndex != 1 && modeIndex != 2))
+        {
+            Console.WriteLine("Please enter a valid option.");
+        }
+        return modeIndex;
     }
-    
+
+    public static void AskForAnswer(string formula)
+    {
+        Console.WriteLine($"How many subformulas is in the formula?\n{formula}");
+    }
+
+    public static int TakeTheInteger()
+    {
+        int number;
+        while (!int.TryParse(Console.ReadLine(), out number))
+        {
+            Console.WriteLine("Please enter an integer.");
+        }
+        return number;
+    }
+
+    public static void ShowCorrectness(bool correctness)
+    {
+        if (correctness)
+        {
+            Console.WriteLine("Correct answer!");
+        }
+        else
+        {
+            Console.WriteLine("Incorrect answer!    ");
+        }
+    }
+
+    public static void ShowTestResult(int score, int questionsAmount)
+    {
+        Console.WriteLine($"Your result is {score}/{questionsAmount}");   
+    }
 }

@@ -23,10 +23,33 @@ class Program
 
     private static void Run()
     {
+        int modeOption = IOSystem.TakeTheModeOption();
+        switch (modeOption)
+        {
+            case 1:
+                RunSubformulasFinder();
+                break;
+            case 2:
+                RunTest();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private static void RunSubformulasFinder()
+    {
         InputParser parser = new InputParser();
-        string reformedFormula = parser.ReformFormula(IOSystem.TakeTheFormula());
-        List<string> subformulas = parser.FindSubformulas(reformedFormula);
+        string formula = IOSystem.TakeTheFormula();
+        List<string> subformulas = parser.FindSubformulas(formula);
         IOSystem.ShowAmountOfSubformulas(subformulas);
+    }
+    
+    
+    private static void RunTest()
+    {
+        UserTestingSystem userTestingSystem = new UserTestingSystem();
+        userTestingSystem.TestUserKnowledge();
     }
 }
 
