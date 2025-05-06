@@ -72,8 +72,10 @@ public class InputParser
           return reformedFormula;
      }
      
-     public List<string> FindSubformulas(string reformedFormula)
+     public List<string> FindSubformulas(string formula)
      {
+          _letters.Clear();
+          string reformedFormula = ReformFormula(formula);
           List<string> subformulas = new List<string>(_letters.Select(l => l.ToString()));
           Stack<string> formulaStack = new Stack<string>();
 
