@@ -60,7 +60,7 @@ public class InputParser
                     if (formula[k] == '/' || formula[k] == '\\' || formula[k] == '-')
                          ++k;
 
-               }
+               }    
           }
           
           while (formulaStack.Count != 0)
