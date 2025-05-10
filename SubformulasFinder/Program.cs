@@ -8,8 +8,9 @@
 // Источники:
 // - Проектирование программного обеспечения интеллектуальных систем (3 семестр)
 //
+// Программа считающая количество подформул в формуле сокращённого языка логики
 
-using SKNF_SDNF;
+using SubformulasFinder;
 
 namespace SubformulasFinder;
 
@@ -39,10 +40,18 @@ class Program
 
     private static void RunSubformulasFinder()
     {
-        InputParser parser = new InputParser();
-        string formula = IOSystem.TakeTheFormula();
-        List<string> subformulas = parser.FindSubformulas(formula);
-        IOSystem.ShowAmountOfSubformulas(subformulas);
+        try
+        {
+            InputParser parser = new InputParser();
+            string formula = IOSystem.TakeTheFormula();
+            List<string> subformulas = parser.FindSubformulas(formula);
+            IOSystem.ShowAmountOfSubformulas(subformulas);
+        }
+        catch
+        {
+            Console.WriteLine("Incorrect input, please try again.");
+            return;
+        }
     }
     
     

@@ -9,7 +9,7 @@
 // - Проектирование программного обеспечения интеллектуальных систем (3 семестр)
 //
 
-namespace SKNF_SDNF;
+namespace SubformulasFinder;
 
 public class InputParser
 {
@@ -40,7 +40,7 @@ public class InputParser
                }
 
 
-               if ((formula[k] >= 'a' && formula[k] <= 'z') || (formula[k] >= 'A' && formula[k] <= 'Z') || (formula[k] == '1' || formula[k] == '0'))
+               if ((formula[k] >= 'A' && formula[k] <= 'Z') || (formula[k] == '1' || formula[k] == '0'))
                {
                     reformedFormula += formula[k];
                     if(!_letters.Contains(formula[k]))

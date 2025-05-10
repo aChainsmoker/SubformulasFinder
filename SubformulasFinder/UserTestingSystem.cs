@@ -9,7 +9,7 @@
 // - Проектирование программного обеспечения интеллектуальных систем (3 семестр)
 //
 
-using SKNF_SDNF;
+using SubformulasFinder;
 
 namespace SubformulasFinder;
 
