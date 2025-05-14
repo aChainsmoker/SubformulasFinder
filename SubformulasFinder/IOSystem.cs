@@ -86,7 +86,7 @@ public static class IOSystem
         }
         else
         {
-            Console.WriteLine("Incorrect answer!    ");
+            Console.WriteLine("Incorrect answer!");
         }
     }
 
