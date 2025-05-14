@@ -22,10 +22,13 @@ public class InputParser
      {
           Stack<char> formulaStack = new Stack<char>();
           string reformedFormula = String.Empty;
-               
+          formula = formula.Trim();
+          
           for (int k = 0; k < formula.Length; k++)
           {
-
+               if(CheckIfSymbolIsValid(formula[k]) == false)
+                    throw new ArgumentException("Invalid formula");
+               
                if (formula[k] == '(')
                     formulaStack.Push(formula[k]);
                if (formula[k] == ')')
@@ -42,6 +45,10 @@ public class InputParser
 
                if ((formula[k] >= 'A' && formula[k] <= 'Z') || (formula[k] == '1' || formula[k] == '0'))
                {
+                    if (k != 0 && ((formula[k - 1] >= 'A' && formula[k - 1] <= 'Z') ||
+                                   (formula[k - 1] == '1' || formula[k - 1] == '0')))
+                         throw new ArgumentException("Incorrect formula");
+                    
                     reformedFormula += formula[k];
                     if(!_letters.Contains(formula[k]))
                         _letters.Add(formula[k]);
@@ -70,6 +77,13 @@ public class InputParser
 
           _letters.Sort();
           return reformedFormula;
+     }
+
+     private bool CheckIfSymbolIsValid(char symbol)
+     {
+          if ((symbol >= 'A' && symbol <= 'Z') || (symbol == '1' || symbol == '0') || _operations.Contains(symbol) || symbol == '(' || symbol == ')' || symbol == '>' )
+               return true;
+          return false;
      }
      
      public List<string> FindSubformulas(string formula)

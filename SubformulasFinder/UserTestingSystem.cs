@@ -9,13 +9,11 @@
 // - Проектирование программного обеспечения интеллектуальных систем (3 семестр)
 //
 
-using SubformulasFinder;
-
 namespace SubformulasFinder;
 
 public class UserTestingSystem
 {
-    private List<string> formulasForTest = new List<string>() {"(((A->B)/\\(B->A))~(C->C))", "(((A~B)~C)~(D/\\E))", "((((P/\\(!Q))->R)~P)\\/(P/\\Q))", "(!(!(A\\/B))~C)", "((a\\/b)/\\(!c))", "(!((S->((!R)\\/(P/\\Q)))~(P/\\(!(Q->R)))))", "((((!P)\\/Q)~R)\\/((S->P)/\\Q))", "(R~(((!P)\\/(Q/\\R))~(S->(S->P))))", "((((P/\\(!Q))->R)~P)\\/(P/\\Q))", "(((P~Q)~((((P/\\R)/\\P)\\/(!P))->Q))\\/Q)"};
+    private List<string> formulasForTest = new List<string>() {"(((A->B)/\\(B->A))~(C->C))", "(((A~B)~C)~(D/\\E))", "((((P/\\(!Q))->R)~P)\\/(P/\\Q))", "(!(!(A\\/B))~C)", "((A\\/B)/\\(!C))", "(!((S->((!R)\\/(P/\\Q)))~(P/\\(!(Q->R)))))", "((((!P)\\/Q)~R)\\/((S->P)/\\Q))", "(R~(((!P)\\/(Q/\\R))~(S->(S->P))))", "((((P/\\(!Q))->R)~P)\\/(P/\\Q))", "(((P~Q)~((((P/\\R)/\\P)\\/(!P))->Q))\\/Q)"};
     
     public void TestUserKnowledge()
     {
