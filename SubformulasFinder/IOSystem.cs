@@ -92,6 +92,6 @@ public static class IOSystem
 
     public static void ShowTestResult(int score, int questionsAmount)
     {
-        Console.WriteLine($"Your result is {score}/{questionsAmount}");   
+            Console.WriteLine($"Your result is {score}/{questionsAmount}");   
     }
 }

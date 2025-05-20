@@ -45,8 +45,7 @@ public class InputParser
 
                if ((formula[k] >= 'A' && formula[k] <= 'Z') || (formula[k] == '1' || formula[k] == '0'))
                {
-                    if (k != 0 && ((formula[k - 1] >= 'A' && formula[k - 1] <= 'Z') ||
-                                   (formula[k - 1] == '1' || formula[k - 1] == '0')))
+                    if (k != 0 && ((formula[k - 1] >= 'A' && formula[k - 1] <= 'Z') || (formula[k - 1] == '1' || formula[k - 1] == '0')))
                          throw new ArgumentException("Incorrect formula");
                     
                     reformedFormula += formula[k];
@@ -54,7 +53,7 @@ public class InputParser
                         _letters.Add(formula[k]);
                }
 
-
+     
                if (_operations.Contains(formula[k]))
                {
                     while (formulaStack.Count != 0 && PrioSet(formulaStack.Peek()) >= PrioSet(formula[k]))
