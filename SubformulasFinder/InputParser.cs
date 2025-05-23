@@ -8,13 +8,11 @@
 // Источники:
 // - Проектирование программного обеспечения интеллектуальных систем (3 семестр)
 //
-
-using System.Runtime.InteropServices.JavaScript;
-
 namespace SubformulasFinder;
 
 public class InputParser
 {
+    private readonly int exceptionalFormulaLengthForBracketsCheck = 3;
      private readonly char[] _operations = new char[] { '!', '~', '/', '\\', '-' };
      private List<char> _letters = new List<char>();
      
@@ -26,7 +24,7 @@ public class InputParser
           string reformedFormula = String.Empty;
           formula = formula.Trim();
           
-          if(!CheckIfFormulaHasRightAmountOfBracets(formula))
+          if(!CheckIfFormulaHasRightAmountOfBrackets(formula))
                throw new ArgumentException("Brackets are placed incorrectly");
           
           for (int k = 0; k < formula.Length; k++)
@@ -38,7 +36,7 @@ public class InputParser
                     formulaStack.Push(formula[k]);
                if (formula[k] == ')')
                {
-                    if(formulaStack.Peek() == '(' && formula.Length > 3)
+                    if(formulaStack.Peek() == '(' && formula.Length > exceptionalFormulaLengthForBracketsCheck)
                          throw new ArgumentException("Brackets are placed incorrectly");
                     while (formulaStack.Peek() != '(')
                     {
@@ -90,17 +88,17 @@ public class InputParser
           return false;
      }
 
-     private bool CheckIfFormulaHasRightAmountOfBracets(string formula)
+     private bool CheckIfFormulaHasRightAmountOfBrackets(string formula)
      {
-          int amountOfBracets = 0;
+          int amountOfBrackets = 0;
           foreach (var symbol in formula)
           {
                if (symbol == '(')
-                    amountOfBracets++;
+                    amountOfBrackets++;
                else if (symbol == ')')
-                    amountOfBracets--;
+                    amountOfBrackets--;
           }
-          return amountOfBracets == 0;
+          return amountOfBrackets == 0;
      }
      
      public List<string> FindSubformulas(string formula)
