@@ -38,10 +38,10 @@ class Program
 
     private static void RunSubformulasFinder()
     {
+        InputParser parser = new InputParser();
+        string formula = IOSystem.TakeTheFormula();
         try
-        {
-            InputParser parser = new InputParser();
-            string formula = IOSystem.TakeTheFormula();
+        {   
             List<string> subformulas = parser.FindSubformulas(formula);
             IOSystem.ShowAmountOfSubformulas(subformulas);
         }

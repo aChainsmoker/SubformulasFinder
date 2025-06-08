@@ -16,6 +16,8 @@ public static class IOSystem
 {
     public static void ShowAmountOfSubformulas(List<string> subformulas)
     {
+        if (subformulas.Count == 0)
+            throw new ArgumentException("Formula is empty.");
         PrepareFormulas(subformulas);
         for(int i = 0; i < subformulas.Count; i++)
         {
